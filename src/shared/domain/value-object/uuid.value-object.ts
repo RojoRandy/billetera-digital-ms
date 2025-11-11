@@ -1,16 +1,15 @@
-import { randomUUID } from "crypto";
+import { v4 as uuidv4, validate } from 'uuid';
 import { UUIDException } from "../exception/uuid.excpetions";
 import { ValueObject } from "./value-object";
 
 export class Uuid extends ValueObject<string> {
-  private uuidRegex: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   public constructor(value: string) {
     super(value);
     this.isValid(value);
   }
 
   public static create(): Uuid {
-    return new this(randomUUID().toString())
+    return new this(uuidv4())
   }
 
   public static fromString(value: string): Uuid {
@@ -18,7 +17,7 @@ export class Uuid extends ValueObject<string> {
   }
 
   private isValid(value: string): void {
-    if (!new RegExp(this.uuidRegex).test(value)) {
+    if (!validate(value)) {
       throw UUIDException.invalid(value)
     }
   }
