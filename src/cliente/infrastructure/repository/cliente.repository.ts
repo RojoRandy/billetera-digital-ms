@@ -33,7 +33,7 @@ export class ClienteRepositoryImpl implements ClienteRepository {
       if(!cliente) throw new Error('Cliente no encontrado');
 
       return Cliente.fromPrimitives({
-        id: cliente._id,
+        id: cliente._id.toString(),
         documento: cliente.documento,
         nombres: cliente.nombres,
         email: cliente.email,
@@ -55,7 +55,7 @@ export class ClienteRepositoryImpl implements ClienteRepository {
       if(!cliente) throw new Error('Cliente no encontrado');
 
       return Cliente.fromPrimitives({
-        id: cliente._id,
+        id: cliente._id.toString(),
         documento: cliente.documento,
         nombres: cliente.nombres,
         email: cliente.email,

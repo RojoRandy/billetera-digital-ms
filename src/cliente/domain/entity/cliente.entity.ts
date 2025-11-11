@@ -1,7 +1,6 @@
 import { AggregateRoot } from "src/shared/domain/event/aggregate-root";
 import { DocumentoCliente } from "../value-object/documento-cliente.value-object";
 import { NombresCliente } from "../value-object/nombres-cliente.value-object";
-import { EmailValueObject } from "src/shared/domain/value-object/email.value-object";
 import { EmailCliente } from "../value-object/email-cliente.value-object";
 import { CelularCliente } from "../value-object/celular-cliente.value-object";
 import { ClienteId } from "../value-object/cliente-id.value-object";
