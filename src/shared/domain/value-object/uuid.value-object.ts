@@ -1,5 +1,5 @@
 import { v4 as uuidv4, validate } from 'uuid';
-import { UUIDException } from "../exception/uuid.excpetions";
+import { UUIDException } from "../exception/uuid.exception";
 import { ValueObject } from "./value-object";
 
 export class Uuid extends ValueObject<string> {
