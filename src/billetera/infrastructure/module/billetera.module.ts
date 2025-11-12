@@ -17,13 +17,21 @@ import { billeteraRepositoryDefinition } from "src/billetera/domain/repository/b
   ],
   controllers: [],
   providers: [
-    CrearBilleteraClienteUseCase,
+    {
+      provide: CrearBilleteraClienteUseCase.name,
+      useClass: CrearBilleteraClienteUseCase
+    },
     BilleteraRepositoryImpl,
     {
       provide: billeteraRepositoryDefinition.name,
       useClass: BilleteraRepositoryImpl,
     }
   ],
-  exports: []
+  exports: [
+    {
+      provide: CrearBilleteraClienteUseCase.name,
+      useClass: CrearBilleteraClienteUseCase
+    },
+  ]
 })
 export class BilleteraModule {}
