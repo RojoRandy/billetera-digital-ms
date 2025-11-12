@@ -1,15 +1,15 @@
 import { DomainEvent } from "src/shared/domain/event/domain-event";
 import { Uuid } from "src/shared/domain/value-object/uuid.value-object";
-import { Cliente } from "../entity/cliente.entity";
+import { Billetera } from "../entity/billetera.entity";
 
-export const CLIENTE_CREADO_EVENT = 'cliente.creado';
+export const BILLETERA_CREADA_EVENT = 'billetera.creada'
 
-export class ClienteCreado implements DomainEvent {
+export class BilleteraCreada implements DomainEvent {
   public readonly eventId: Uuid;
-  public readonly name = CLIENTE_CREADO_EVENT;
+  public readonly name = BILLETERA_CREADA_EVENT;
   public readonly occurredOn: Date;
 
-  public constructor(public readonly cliente: Partial<Cliente>) {
+  public constructor(public readonly billetera: Partial<Billetera>) {
     this.eventId = Uuid.create();
     this.occurredOn = new Date();
   }
