@@ -3,9 +3,9 @@ import { RpcException } from "@nestjs/microservices";
 import { ErrorResponseDto } from "src/shared/infrastructure/dto/error-response.dto";
 
 export class InvalidArgumentException extends RpcException {
-  public static mustBeDefined(): InvalidArgumentException {
+  public static mustBeDefined(name: string): InvalidArgumentException {
     return new this(ErrorResponseDto.create({
-      message: 'El valor debe estar definido',
+      message: `El valor del campo "${name}" debe estar definido`,
       httpStatus: HttpStatus.BAD_REQUEST
     }));
   }

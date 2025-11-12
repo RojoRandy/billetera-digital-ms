@@ -21,6 +21,6 @@ export class RegistrarClienteController {
       CelularCliente.fromString(payload.celular)
     );
 
-    return { success: true };
+    return null
   }
 }

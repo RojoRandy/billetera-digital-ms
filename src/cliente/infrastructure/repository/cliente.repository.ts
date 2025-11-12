@@ -21,8 +21,8 @@ export class ClienteRepositoryImpl implements ClienteRepository {
   async create(cliente: Cliente): Promise<void> {
     const {id: _id, ...propsCliente} = cliente.toPrimitives();
 
-    const exists = await this.findByDocumento(cliente.documento);
-    if (exists) {
+    const exists = await this.clienteModel.countDocuments({documento: cliente.documento.value}).exec();
+    if (exists > 0) {
       throw ClienteRegistroException.alreadyExists(cliente.documento);
     }
 

@@ -11,7 +11,7 @@ export abstract class ValueObject<T extends Primitives> {
   }
 
   private isDefined(value: T): void {
-    if (value === null || value === undefined) throw InvalidArgumentException.mustBeDefined();
+    if (value === null || value === undefined) throw InvalidArgumentException.mustBeDefined(this.constructor.name);
   }
 
   equals(other: ValueObject<T>): boolean {
