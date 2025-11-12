@@ -34,16 +34,16 @@ export class BilleteraRepositoryImpl implements BilleteraRepository {
       throw BilleteraRegistroException.unexpected()
     }
   }
-  async update(billetera: Billetera): Promise<void> {
-    const { id: _id, ...propsBilletera } = billetera.toPrimitives();
+  async updateCantidad(billetera: Billetera): Promise<void> {
+    const { id: _id, documento, cantidad } = billetera.toPrimitives();
 
     const billeteraActualizar = await this.billeteraModel.findById(_id).exec();
 
-    if (!billeteraActualizar) throw BilleteraActualizacionException.notFound(propsBilletera.documento)
+    if (!billeteraActualizar) throw BilleteraActualizacionException.notFound(documento)
 
     try {
-      billeteraActualizar?.updateOne({
-        ...propsBilletera
+      await billeteraActualizar?.updateOne({
+        cantidad
       })
     } catch (error) {
       throw BilleteraActualizacionException.unexpected()

@@ -5,7 +5,7 @@ import { CelularCliente } from "src/cliente/domain/value-object/celular-cliente.
 
 export interface BilleteraRepository {
   create(billetera: Billetera): Promise<void>;
-  update(billetera: Billetera): Promise<void>;
+  updateCantidad(billetera: Billetera): Promise<void>;
   findByDatosCliente(documento: DocumentoCliente, celular: CelularCliente): Promise<Billetera>;
 }
 

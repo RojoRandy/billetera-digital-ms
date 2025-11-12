@@ -13,7 +13,7 @@ export class RegistrarClienteController {
   constructor(private readonly registrarClienteUseCase: RegistrarClienteUseCase) {}
 
   @MessagePattern(CLIENTES_REGISTRO)
-  public async execute(@Payload() payload: RegistrarClienteDto): Promise<any> {
+  public async execute(@Payload() payload: RegistrarClienteDto): Promise<boolean> {
     await this.registrarClienteUseCase.execute(
       DocumentoCliente.fromString(payload.documento),
       NombresCliente.fromString(payload.nombres),
@@ -21,6 +21,6 @@ export class RegistrarClienteController {
       CelularCliente.fromString(payload.celular)
     );
 
-    return null
+    return true
   }
 }

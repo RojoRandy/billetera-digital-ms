@@ -12,6 +12,12 @@ export class CantidadBilletera extends NumberValueObject {
     return new this(cantidad);
   }
 
+  public sumar(otraCantidad: CantidadBilletera): CantidadBilletera {
+    const nuevoValor = this.value + otraCantidad.value;
+
+    return new CantidadBilletera(nuevoValor);
+  }
+
   private isValid(): void {
     if (this.cantidad < 0) throw CantidadBilleteraException.nonNegativeAllowed();
   }
