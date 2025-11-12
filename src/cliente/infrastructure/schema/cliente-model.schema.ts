@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import mongoose, { HydratedDocument, SchemaTypes, Types } from "mongoose";
+import { HydratedDocument } from "mongoose";
 
 export type ClienteDocument = HydratedDocument<ClienteModel>;
 
@@ -8,8 +8,8 @@ export type ClienteDocument = HydratedDocument<ClienteModel>;
   timestamps: true,
 })
 export class ClienteModel {
-  @Prop({ type: SchemaTypes.ObjectId })
-  _id: Types.ObjectId;
+  @Prop()
+  _id: string;
 
   @Prop({ required: true, unique: true })
   documento: string;

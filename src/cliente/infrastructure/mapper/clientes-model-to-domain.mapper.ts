@@ -6,7 +6,7 @@ export class ClientesModelToDomainMapper {
   public static execute (clientes: ClienteModel[]): Cliente[] {
     return clientes.map((cliente) => {
       return Cliente.fromPrimitives({
-        id: cliente._id.toString(),
+        id: cliente._id,
         documento: cliente.documento,
         nombres: cliente.nombres,
         email: cliente.email,

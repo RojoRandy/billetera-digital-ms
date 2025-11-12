@@ -7,6 +7,7 @@ export class CelularCliente extends StringValueObject {
 
   public constructor(private readonly celular: string) {
     super(celular);
+    this.isValid();
   }
 
   public static fromString(celular: string): CelularCliente {
