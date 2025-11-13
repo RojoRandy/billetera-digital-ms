@@ -1,0 +1,35 @@
+# Dependencias locales
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Archivos generados por la compilación
+dist
+build
+*.tsbuildinfo
+
+# Archivos de entorno (usa variables en docker-compose o secrets en prod)
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Archivos de control de versiones y configuración del IDE
+.git
+.gitignore
+.vscode
+.idea
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Docker y configuración local
+Dockerfile
+docker-compose.yml
+
+# Logs y datos temporales
+*.log
+tmp
+coverage
