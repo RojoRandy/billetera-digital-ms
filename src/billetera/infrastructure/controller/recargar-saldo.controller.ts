@@ -6,22 +6,21 @@ import { CelularCliente } from "src/cliente/domain/value-object/celular-cliente.
 import { CantidadBilletera } from "src/billetera/domain/value-object/cantidad-billetera.value-object";
 import { BILLETERA_RECARGAR_SALDO } from "../message/billetera.message";
 import { Controller } from "@nestjs/common";
+import { BilleteraResponse } from "src/billetera/application/presentation/billetera.presentation";
 
 
-@Controller("clientes/registrar")
+@Controller("billeteras/recargar-saldo")
 export class RecargarSaldoController {
   constructor(
-    private readonly recargarBilleteraUseCase: RecargarSaldoUseCase
+    private readonly recargarSaldoUseCase: RecargarSaldoUseCase
   ){}
 
   @MessagePattern(BILLETERA_RECARGAR_SALDO)
-  public async execute(@Payload() payload: RecargarSaldoDto): Promise<boolean> {
-    await this.recargarBilleteraUseCase.execute(
+  public async execute(@Payload() payload: RecargarSaldoDto): Promise<BilleteraResponse> {
+    return this.recargarSaldoUseCase.execute(
       DocumentoCliente.fromString(payload.documento),
       CelularCliente.fromString(payload.celular),
       CantidadBilletera.fromNumber(payload.cantidad),
     )
-
-    return true
   }
 }

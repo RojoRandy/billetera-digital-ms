@@ -8,5 +8,5 @@ export class CantidadBilleteraException extends RpcException {
       message: 'La cantidad no puede ser un valor negativo',
       httpStatus: HttpStatus.BAD_REQUEST
     }))
-  } 
+  }
 }

@@ -6,6 +6,8 @@ import { BilleteraRepositoryImpl } from "../repository/billetera.repository";
 import { billeteraRepositoryDefinition } from "src/billetera/domain/repository/billetera.repository";
 import { RecargarSaldoController } from "../controller/recargar-saldo.controller";
 import { RecargarSaldoUseCase } from "src/billetera/application/use-case/recargar-saldo.use-case";
+import { ConsultarSaldoUseCase } from "src/billetera/application/use-case/consultar-saldo.use-case";
+import { ConsultarSaldoController } from "../controller/consultar-saldo.controller";
 
 
 @Module({
@@ -18,9 +20,11 @@ import { RecargarSaldoUseCase } from "src/billetera/application/use-case/recarga
     ])
   ],
   controllers: [
+    ConsultarSaldoController,
     RecargarSaldoController
   ],
   providers: [
+    ConsultarSaldoUseCase,
     RecargarSaldoUseCase,
     {
       provide: CrearBilleteraClienteUseCase.name,

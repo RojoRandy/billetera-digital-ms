@@ -11,6 +11,8 @@ import { CrearBilleteraClienteUseCase } from "src/billetera/application/use-case
 import { BilleteraModel, BilleteraSchema } from "src/billetera/infrastructure/schema/billetera-model.schema";
 import { BilleteraRepositoryImpl } from "src/billetera/infrastructure/repository/billetera.repository";
 import { billeteraRepositoryDefinition } from "src/billetera/domain/repository/billetera.repository";
+import { ConsultarClienteController } from "../controller/consultar-cliente.controller";
+import { ConsultarClienteUseCase } from "src/cliente/application/use-case/consultar-cliente.use-case";
 
 
 @Module({
@@ -27,10 +29,12 @@ import { billeteraRepositoryDefinition } from "src/billetera/domain/repository/b
     ])
   ],
   controllers: [
-    RegistrarClienteController
+    RegistrarClienteController,
+    ConsultarClienteController
   ],
   providers: [
     RegistrarClienteUseCase,
+    ConsultarClienteUseCase,
     CrearBilleteraCliente,
     CrearBilleteraClienteSubscriber,
     {

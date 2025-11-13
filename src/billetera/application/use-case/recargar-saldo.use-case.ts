@@ -4,6 +4,7 @@ import { CantidadBilletera } from "src/billetera/domain/value-object/cantidad-bi
 import { CelularCliente } from "src/cliente/domain/value-object/celular-cliente.value-object";
 import { DocumentoCliente } from "src/cliente/domain/value-object/documento-cliente.value-object";
 import { type EventBus, eventBusDefinition } from "src/shared/domain/service/event-bus.service";
+import { BilleteraPresentation, BilleteraResponse } from "../presentation/billetera.presentation";
 
 
 export class RecargarSaldoUseCase {
@@ -14,7 +15,7 @@ export class RecargarSaldoUseCase {
     private readonly eventBus: EventBus,
   ) {}
 
-  public async execute(documento: DocumentoCliente, celular: CelularCliente, cantidad: CantidadBilletera): Promise<void> {
+  public async execute(documento: DocumentoCliente, celular: CelularCliente, cantidad: CantidadBilletera): Promise<BilleteraResponse> {
     const billetera = await this.billeteraRepository.findByDatosCliente(
       documento, 
       celular
@@ -24,5 +25,7 @@ export class RecargarSaldoUseCase {
 
     await this.billeteraRepository.updateCantidad(billetera);
     this.eventBus.publish(billetera.pullEvents())
+
+    return BilleteraPresentation.fromBilletera(billetera).format()
   }
 }
