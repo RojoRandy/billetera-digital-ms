@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { envs } from './shared/infrastructure/config/envs';
 import { NatsModule } from './shared/infrastructure/broker/nats.module';
 import { ClienteModule } from './cliente/infrastructure/module/cliente.module';
+import { BilleteraModule } from './billetera/infrastructure/module/billetera.module';
 
 @Global()
 @Module({
@@ -14,7 +15,8 @@ import { ClienteModule } from './cliente/infrastructure/module/cliente.module';
     NatsModule,
     EventEmitterModule.forRoot(),
     EventEmitter2,
-    ClienteModule
+    ClienteModule,
+    BilleteraModule
   ],
   providers: [
     {
