@@ -5,7 +5,7 @@ import { ErrorResponseDto } from "src/shared/infrastructure/dto/error-response.d
 export class CantidadBilleteraException extends RpcException {
   public static nonNegativeAllowed(): CantidadBilleteraException {
     return new this(ErrorResponseDto.create({
-      message: 'La cantidad de la billetera no puede ser menor a cero',
+      message: 'El saldo de la billetera no puede ser negativo',
       httpStatus: HttpStatus.BAD_REQUEST
     }))
   }
