@@ -43,7 +43,7 @@ export class Billetera extends AggregateRoot {
   }
 
   public recargarSaldo(cantidad: CantidadBilletera): void {
-    const nuevoSaldo = this.cantidad.restar(cantidad)
+    const nuevoSaldo = this.cantidad.sumar(cantidad)
     this.cantidad = nuevoSaldo;
 
     this.record(new SaldoRecargado(this, cantidad, nuevoSaldo))
