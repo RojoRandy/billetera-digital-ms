@@ -7,6 +7,9 @@ import { envs } from './shared/infrastructure/config/envs';
 import { NatsModule } from './shared/infrastructure/broker/nats.module';
 import { ClienteModule } from './cliente/infrastructure/module/cliente.module';
 import { BilleteraModule } from './billetera/infrastructure/module/billetera.module';
+import { mailerDefinition } from './shared/domain/service/mailer.service';
+import { MailerService } from './shared/infrastructure/mail/service/mailer.service';
+import { CompraModule } from './compra/infrastructure/module/compra.module';
 
 @Global()
 @Module({
@@ -16,18 +19,27 @@ import { BilleteraModule } from './billetera/infrastructure/module/billetera.mod
     EventEmitterModule.forRoot(),
     EventEmitter2,
     ClienteModule,
-    BilleteraModule
+    BilleteraModule,
+    CompraModule
   ],
   providers: [
     {
       provide: eventBusDefinition.name,
       useClass: EventEmitterService
+    },
+    {
+      provide: mailerDefinition.name,
+      useClass: MailerService
     }
   ],
   exports: [
     {
       provide: eventBusDefinition.name,
       useClass: EventEmitterService
+    },
+    {
+      provide: mailerDefinition.name,
+      useClass: MailerService
     }
   ]
 })

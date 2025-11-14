@@ -5,6 +5,7 @@ import { CelularCliente } from "src/cliente/domain/value-object/celular-cliente.
 import { CantidadBilletera } from "../value-object/cantidad-billetera.value-object";
 import { BilleteraCreada } from "../event/billetera-creada.event";
 import { SaldoRecargado } from "../event/saldo-recargado.event";
+import { SaldoRestado } from "../event/saldo-restado.event";
 
 export class Billetera extends AggregateRoot {
   
@@ -42,10 +43,17 @@ export class Billetera extends AggregateRoot {
   }
 
   public recargarSaldo(cantidad: CantidadBilletera): void {
-    const nuevoSaldo = this.cantidad.sumar(cantidad)
+    const nuevoSaldo = this.cantidad.restar(cantidad)
     this.cantidad = nuevoSaldo;
 
     this.record(new SaldoRecargado(this, cantidad, nuevoSaldo))
+  }
+
+  public restarSaldo(cantidad: CantidadBilletera): void {
+    const nuevoSaldo = this.cantidad.restar(cantidad)
+    this.cantidad = nuevoSaldo;
+
+    this.record(new SaldoRestado(this, cantidad, nuevoSaldo))
   }
 
   public static fromPrimitives({

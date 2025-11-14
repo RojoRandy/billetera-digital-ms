@@ -1,5 +1,3 @@
-import { BilleteraResponse } from "src/billetera/application/presentation/billetera.presentation"
-import { BilleteraRegistroException } from "src/billetera/domain/exception/billetera-registro.exception"
 import { Cliente } from "src/cliente/domain/entity/cliente.entity"
 
 export class ClientePresentation {

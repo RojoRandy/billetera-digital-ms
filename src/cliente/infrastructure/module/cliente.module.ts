@@ -51,6 +51,13 @@ import { ConsultarClienteUseCase } from "src/cliente/application/use-case/consul
       provide: billeteraRepositoryDefinition.name,
       useClass: BilleteraRepositoryImpl
     }
+  ],
+  exports: [
+    ClienteRepositoryImpl,
+    {
+      provide: clienteRepositoryDefinition.name,
+      useClass: ClienteRepositoryImpl,
+    },
   ]
 })
 export class ClienteModule {}
