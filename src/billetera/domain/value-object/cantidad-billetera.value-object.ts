@@ -18,6 +18,12 @@ export class CantidadBilletera extends NumberValueObject {
     return new CantidadBilletera(nuevoValor);
   }
 
+  public restar(otraCantidad: CantidadBilletera): CantidadBilletera {
+    const nuevoValor = this.value - otraCantidad.value;
+
+    return new CantidadBilletera(nuevoValor);
+  }
+
   private isValid(): void {
     if (this.cantidad < 0) throw CantidadBilleteraException.nonNegativeAllowed();
   }

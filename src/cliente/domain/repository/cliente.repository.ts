@@ -1,4 +1,5 @@
 import { Cliente } from "../entity/cliente.entity";
+import { CelularCliente } from "../value-object/celular-cliente.value-object";
 import { ClienteId } from "../value-object/cliente-id.value-object";
 import { DocumentoCliente } from "../value-object/documento-cliente.value-object";
 

@@ -2,11 +2,12 @@ import { HttpStatus } from "@nestjs/common";
 import { RpcException } from "@nestjs/microservices";
 import { ErrorResponseDto } from "src/shared/infrastructure/dto/error-response.dto";
 
-export class CantidadBilleteraException extends RpcException {
-  public static nonNegativeAllowed(): CantidadBilleteraException {
+
+export class MailerServiceException extends RpcException {
+  public static sendingEmailError(): MailerServiceException {
     return new this(ErrorResponseDto.create({
-      message: 'El saldo de la billetera no puede ser negativo',
-      httpStatus: HttpStatus.BAD_REQUEST
+      message: 'Fallo el servicio de envió de correo',
+      httpStatus: HttpStatus.INTERNAL_SERVER_ERROR
     }))
   }
 }
